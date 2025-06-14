@@ -3,13 +3,14 @@
 import { Button } from "@/components/ui/button";
 import { useShoppingCart } from "use-shopping-cart";
 import { urlFor } from "../lib/sanity";
+import { SanityImage } from "../interface";
 
 export interface ProductCart {
   name: string;
   description: string;
   price: number;
   currency: string;
-  image: any;
+  image: SanityImage;
   price_id: string;
 }
 
