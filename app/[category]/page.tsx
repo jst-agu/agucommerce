@@ -3,6 +3,12 @@ import { simplifiedProduct } from "../interface";
 import { client } from "../lib/sanity";
 import Image from "next/image";
 
+type PageProps = {
+  params: {
+    category: string;
+  };
+};
+
 async function getData(cateogry: string) {
   const query = `*[_type == "product" && category->name == "${cateogry}"] {
         _id,
@@ -20,11 +26,7 @@ async function getData(cateogry: string) {
 
 export const dynamic = "force-dynamic";
 
-export default async function CategoryPage({
-  params,
-}: {
-  params: { category: string };
-}) {
+export default async function CategoryPage({params}: PageProps) {
   const data: simplifiedProduct[] = await getData(params.category);
 
   return (
